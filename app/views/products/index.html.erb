@@ -1,0 +1,7 @@
+<h1>ALL PRODUCT</h1>
+<% @products.each do |product| %>
+  <h3>name: <%= product.name %></h3>
+  <p>Price: <%= product.price%></p>
+  <p>Code: <%= product.code%></p>
+  <p><%= link_to "Add to cart", cart_items_path(:product_id => product.id), method: :post %></p>
+<% end %>

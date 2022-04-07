@@ -1,13 +1,18 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-    if Rails.env.development?
-    mount Sidekiq::Web => '/sidekiq'
-  else
-    authenticate :user, lambda { |u| u.admin? } do
-      mount Sidekiq::Web => '/sidekiq'
-    end
-  end
+  # resources :products
+  root 'products#index'
 
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  get 'carts/:id' => "carts#show", as: "cart"
+  delete 'carts/:id' => "carts#destroy"
+
+  post 'cart_items/:id/add' => "cart_items#add_quantity", as: "cart_item_add"
+  post 'cart_items/:id/reduce' => "cart_items#reduce_quantity", as: "cart_item_reduce"
+  post 'cart_items' => "cart_items#create"
+  get 'cart_items/:id' => "cart_items#show", as: "cart_item"
+  delete 'cart_items/:id' => "cart_items#destroy"
+
+  resources :products
+  resources :orders
 end

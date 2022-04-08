@@ -3,18 +3,6 @@ class CartItem < ApplicationRecord
   belongs_to :cart
   belongs_to :log
 
-  # def total_price
-  #   # self.quantity * self.product.price
-  #   self.cart_item.each do |item|
-  #     #name = item['Green']
-  #     if item.name == item['Green'] && item['quantity'] % 2 != 0
-  #       product = @products.find {|product| product.name == "Green" }
-  #       r = item['quantity'] % 2
-  #       p = r * se
-
-  #     end
-  #   end
-  # end
 
   def total_price
     if self.product.name == "Green" && self.quantity % 2 != 0

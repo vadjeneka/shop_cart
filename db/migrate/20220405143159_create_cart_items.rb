@@ -4,7 +4,7 @@ class CreateCartItems < ActiveRecord::Migration[6.1]
       t.references :product, null: false, foreign_key: true, type: :uuid
       t.references :cart, null: false, foreign_key: true, type: :uuid
       t.integer :quantity, :default => 1
-      t.decimal :total_price, :default => 0.0
+      # t.decimal :total_price, :default => 0.0
       t.references :log, null: false, foreign_key: true, type: :uuid
       t.timestamps
     end

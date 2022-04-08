@@ -1,4 +1,4 @@
 class Log < ApplicationRecord
-  # belongs_to :product
+  validates :description, presence: true
   has_many :cart_items
 end
